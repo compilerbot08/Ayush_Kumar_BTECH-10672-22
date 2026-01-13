@@ -25,8 +25,8 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', message: 'Server is running' });
 });
 
-// routes will be added here
-// app.use('/api/auth', require('./src/routes/authRoutes'));
+// routes
+app.use('/api/auth', require('./src/routes/authRoutes'));
 // app.use('/api/users', require('./src/routes/userRoutes'));
 // app.use('/api/tasks', require('./src/routes/taskRoutes'));
 
