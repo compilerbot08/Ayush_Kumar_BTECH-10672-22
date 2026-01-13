@@ -242,7 +242,7 @@ Common HTTP status codes:
 cd backend
 npm test
 ```
-Demo
+##Demo
 Sign in Page
 <img width="1531" height="906" alt="Screenshot 2026-01-13 204108" src="https://github.com/user-attachments/assets/ae777dc9-8534-4a8a-8283-d43042f7861c" />
 Sign Up Page
