@@ -1,0 +1,13 @@
+{
+  "name": "kanban-task-manager",
+  "version": "1.0.0",
+  "description": "A full-stack Kanban-style task management application with user authentication",
+  "author": "Ayush Kumar",
+  "license": "MIT",
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "start:backend": "cd backend && npm start"
+  }
+}
