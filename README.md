@@ -242,12 +242,12 @@ Common HTTP status codes:
 cd backend
 npm test
 ```
-##Demo
+## Demo
 Sign in Page
 <img width="1531" height="906" alt="Screenshot 2026-01-13 204108" src="https://github.com/user-attachments/assets/ae777dc9-8534-4a8a-8283-d43042f7861c" />
 Sign Up Page
 <img width="1919" height="910" alt="Screenshot 2026-01-13 204251" src="https://github.com/user-attachments/assets/8b31d262-df34-4781-a791-068827eead4c" />
-Task Board
+Kanban Board
 <img width="1916" height="909" alt="Screenshot 2026-01-13 204221" src="https://github.com/user-attachments/assets/f5a9a192-e026-4691-ab59-a73596e09c30" />
 Profile
 <img width="1919" height="911" alt="Screenshot 2026-01-13 204230" src="https://github.com/user-attachments/assets/9e3c1740-ef63-436d-a5be-281be04ef010" />
