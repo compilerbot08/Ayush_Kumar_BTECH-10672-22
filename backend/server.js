@@ -28,7 +28,7 @@ app.get('/api/health', (req, res) => {
 // routes
 app.use('/api/auth', require('./src/routes/authRoutes'));
 app.use('/api/users', require('./src/routes/userRoutes'));
-// app.use('/api/tasks', require('./src/routes/taskRoutes'));
+app.use('/api/tasks', require('./src/routes/taskRoutes'));
 
 // global error handler
 app.use((err, req, res, next) => {
