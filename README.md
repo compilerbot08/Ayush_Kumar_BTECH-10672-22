@@ -1,13 +1,23 @@
 # Task Manager - Kanban Board
 
-A full-stack task management application with a Kanban-style interface for organizing tasks.
+A full-stack task management application with a Kanban-style interface for organizing tasks. Built with React, Node.js, Express, and MongoDB.
 
 ## Tech Stack
 
-- **Frontend**: React, Vanilla CSS
+- **Frontend**: React 18, React Router, Axios, Vanilla CSS
 - **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Authentication**: JWT
+- **Database**: MongoDB with Mongoose ODM
+- **Authentication**: JWT (JSON Web Tokens)
+
+## Features
+
+- User registration and login with JWT authentication
+- User profile management (update and delete)
+- Task CRUD operations
+- Kanban board with three columns: Pending, In Progress, Completed
+- Drag and drop tasks between columns
+- Task filtering by status
+- Mobile responsive design
 
 ## Project Structure
 
@@ -15,26 +25,26 @@ A full-stack task management application with a Kanban-style interface for organ
 kanban-task-manager/
 ├── backend/
 │   ├── src/
-│   │   ├── config/      # Database and app config
-│   │   ├── controllers/ # Route handlers
-│   │   ├── middleware/  # Auth and error handling
-│   │   ├── models/      # Mongoose schemas
-│   │   ├── routes/      # API routes
-│   │   ├── services/    # Business logic
-│   │   ├── utils/       # Helper functions
-│   │   └── validators/  # Input validation
-│   ├── tests/           # API tests
-│   ├── server.js
-│   └── package.json
+│   │   ├── config/         # Database configuration
+│   │   ├── controllers/    # Route handlers
+│   │   ├── middleware/     # Auth middleware
+│   │   ├── models/         # Mongoose schemas
+│   │   ├── routes/         # API routes
+│   │   └── utils/          # Helper functions
+│   ├── tests/              # API tests
+│   ├── .env.example
+│   ├── package.json
+│   └── server.js
 ├── frontend/
 │   ├── src/
-│   │   ├── components/  # React components
-│   │   ├── pages/       # Page components
-│   │   ├── hooks/       # Custom hooks
-│   │   ├── context/     # React context
-│   │   ├── services/    # API calls
-│   │   └── styles/      # CSS files
-│   └── package.json
+│   │   ├── components/     # React components
+│   │   ├── context/        # React context (Auth)
+│   │   ├── pages/          # Page components
+│   │   ├── services/       # API service
+│   │   └── styles/         # CSS files
+│   ├── .env.example
+│   ├── package.json
+│   └── vite.config.js
 └── README.md
 ```
 
@@ -43,11 +53,12 @@ kanban-task-manager/
 ### Prerequisites
 
 - Node.js (v18 or higher)
-- MongoDB (local or Atlas)
+- MongoDB (local installation or MongoDB Atlas)
+- npm or yarn
 
 ### Backend Setup
 
-1. Navigate to backend folder:
+1. Navigate to the backend folder:
    ```bash
    cd backend
    ```
@@ -62,42 +73,174 @@ kanban-task-manager/
    cp .env.example .env
    ```
 
-4. Update the `.env` file with your MongoDB URI and JWT secret
+4. Update `.env` with your configuration:
+   ```
+   PORT=5000
+   MONGODB_URI=mongodb://localhost:27017/kanban_taskmanager
+   JWT_SECRET=your_strong_secret_key_here
+   JWT_EXPIRES_IN=7d
+   ```
 
 5. Start the development server:
    ```bash
    npm run dev
    ```
 
-The API will be running at `http://localhost:5000`
+The API will be available at `http://localhost:5000`
 
 ### Frontend Setup
 
-(Instructions will be added once frontend is set up)
+1. Navigate to the frontend folder:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create `.env` file from template:
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+The application will be available at `http://localhost:3000`
 
 ## Environment Variables
 
 ### Backend
 
-| Variable | Description |
-|----------|-------------|
-| PORT | Server port (default: 5000) |
-| MONGODB_URI | MongoDB connection string |
-| JWT_SECRET | Secret key for JWT tokens |
-| JWT_EXPIRES_IN | Token expiry time (e.g., 7d) |
+| Variable | Description | Example |
+|----------|-------------|---------|
+| PORT | Server port | 5000 |
+| MONGODB_URI | MongoDB connection string | mongodb://localhost:27017/kanban_taskmanager |
+| JWT_SECRET | Secret key for JWT tokens | your_strong_secret_key |
+| JWT_EXPIRES_IN | Token expiry duration | 7d |
 
-## API Endpoints
+### Frontend
 
-(Will be documented as endpoints are implemented)
+| Variable | Description | Example |
+|----------|-------------|---------|
+| VITE_API_URL | Backend API URL | http://localhost:5000/api |
 
-## Features
+## API Documentation
 
-- [ ] User authentication (signup, login, logout)
-- [ ] User profile management
-- [ ] Task CRUD operations
-- [ ] Kanban board with drag and drop
-- [ ] Task filtering by status
-- [ ] Mobile responsive design
+### Authentication
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /api/auth/signup | Register new user |
+| POST | /api/auth/login | User login |
+| POST | /api/auth/logout | User logout |
+
+#### Signup Request
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+#### Login Request
+```json
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+#### Response
+```json
+{
+  "success": true,
+  "data": {
+    "user": { "id": "...", "name": "John Doe", "email": "john@example.com" },
+    "token": "jwt_token_here"
+  }
+}
+```
+
+### User Profile (Protected)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/users/profile | Get current user profile |
+| PUT | /api/users/profile | Update profile |
+| DELETE | /api/users/profile | Delete account |
+
+### Tasks (Protected)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/tasks | Get all tasks |
+| GET | /api/tasks?status=pending | Filter tasks by status |
+| GET | /api/tasks/:id | Get single task |
+| POST | /api/tasks | Create new task |
+| PUT | /api/tasks/:id | Update task |
+| PATCH | /api/tasks/:id/status | Update task status |
+| DELETE | /api/tasks/:id | Delete task |
+
+#### Create Task Request
+```json
+{
+  "title": "Complete project",
+  "description": "Finish the kanban board",
+  "dueDate": "2024-01-20",
+  "status": "pending"
+}
+```
+
+#### Task Response
+```json
+{
+  "success": true,
+  "data": {
+    "task": {
+      "_id": "...",
+      "title": "Complete project",
+      "description": "Finish the kanban board",
+      "status": "pending",
+      "dueDate": "2024-01-20T00:00:00.000Z",
+      "user": "...",
+      "createdAt": "..."
+    }
+  }
+}
+```
+
+## Error Handling
+
+All API errors return consistent JSON format:
+
+```json
+{
+  "success": false,
+  "error": {
+    "message": "Error description",
+    "code": "ERROR_CODE"
+  }
+}
+```
+
+Common HTTP status codes:
+- 400: Bad Request (validation errors)
+- 401: Unauthorized (invalid/missing token)
+- 404: Not Found
+- 500: Server Error
+
+## Running Tests
+
+```bash
+cd backend
+npm test
+```
 
 ## License
 
