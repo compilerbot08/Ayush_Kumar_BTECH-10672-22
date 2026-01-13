@@ -35,8 +35,13 @@ describe('Task Endpoints', () => {
                 password: 'password123'
             });
 
-        token = res.body.data.token;
-        userId = res.body.data.user.id;
+        if (res.body.success) {
+            token = res.body.data.token;
+            userId = res.body.data.user.id;
+        } else {
+            // fallback or log error
+            console.error('Setup failed:', res.body);
+        }
     });
 
     const testTask = {
