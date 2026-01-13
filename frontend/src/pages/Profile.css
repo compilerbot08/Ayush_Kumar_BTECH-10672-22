@@ -1,0 +1,93 @@
+/*
+ * Profile page styles
+ */
+
+.profile-page {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.profile-page h1 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-lg);
+    color: var(--color-text);
+}
+
+.profile-card {
+    background: var(--color-surface);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.profile-message {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+}
+
+.profile-message.success {
+    background: #f0fdf4;
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+}
+
+.profile-message.error {
+    background: #fef2f2;
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+}
+
+.danger-zone {
+    background: var(--color-surface);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-error);
+}
+
+.danger-zone h2 {
+    font-size: 1.125rem;
+    color: var(--color-error);
+    margin-bottom: var(--space-sm);
+}
+
+.danger-zone>p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+    font-size: 0.875rem;
+}
+
+.btn-danger {
+    background: var(--color-error);
+    color: white;
+    border: none;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+}
+
+.btn-danger:hover {
+    background: #8b4545;
+}
+
+.delete-confirm {
+    margin-top: var(--space-md);
+}
+
+.delete-confirm p {
+    color: var(--color-error);
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+}
+
+.delete-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
