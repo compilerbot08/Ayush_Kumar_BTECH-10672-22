@@ -2,6 +2,7 @@
 
 A full-stack task management application with a Kanban-style interface for organizing tasks. Built with React, Node.js, Express, and MongoDB.
 
+
 ## Tech Stack
 
 - **Frontend**: React 18, React Router, Axios, Vanilla CSS
