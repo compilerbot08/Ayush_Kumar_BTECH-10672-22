@@ -243,6 +243,4 @@ cd backend
 npm test
 ```
 
-## License
 
-MIT
